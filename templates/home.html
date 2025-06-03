@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit Feedback - Visitor Feedback System{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <!-- Welcome Section -->
+        <div class="col-lg-5 mb-4 mb-lg-0">
+            <h1 class="display-5 fw-bold text-primary mb-4">Your Opinion Matters</h1>
+            <p class="lead">We value your feedback! Share your thoughts, suggestions, or concerns with us.</p>
+            
+            <div class="mt-4 mb-5">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-primary text-white rounded p-2 me-3">
+                        <i class="fas fa-comment-alt"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-0">Simple & Quick</h5>
+                        <p class="text-muted small mb-0">Takes less than a minute to submit</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-primary text-white rounded p-2 me-3">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-0">Privacy Respected</h5>
+                        <p class="text-muted small mb-0">Your information is safe with us</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary text-white rounded p-2 me-3">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-0">Makes a Difference</h5>
+                        <p class="text-muted small mb-0">We act on your valuable feedback</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="{{ url_for('archive') }}" class="btn btn-outline-primary">
+                <i class="fas fa-archive me-2"></i>Browse Previous Feedback
+            </a>
+        </div>
+        
+        <!-- Feedback Form Section -->
+        <div class="col-lg-7">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="card-title mb-4">Share Your Feedback</h2>
+                    
+                    <form action="{{ url_for('submit_feedback') }}" method="post">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Your Name <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                </div>
+                                <div class="form-text">We'll only use this to follow up if needed</div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="category" class="form-label">Feedback Category <span class="text-danger">*</span></label>
+                                <select class="form-select" id="category" name="category" required>
+                                    <option value="" selected disabled>Choose a category...</option>
+                                    <option value="Suggestion">Suggestion</option>
+                                    <option value="Compliment">Compliment</option>
+                                    <option value="Problem">Problem/Issue</option>
+                                    <option value="Question">Question</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="message" class="form-label">Your Feedback <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
